@@ -6,12 +6,9 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.ListView
-import android.widget.TextView
-import com.nollpointer.computationalapp.CardController
 import com.nollpointer.computationalapp.R
-import kotlin.math.roundToInt
 
-class NaturalNumbersComputationCard(context: Context): CardView(context), CardController {
+class NaturalNumbersComputationCard(context: Context): CardView(context) {
 
     private val resultListView: ListView
     private val firstValueEditText: EditText

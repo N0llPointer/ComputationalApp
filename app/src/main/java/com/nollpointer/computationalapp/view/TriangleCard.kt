@@ -5,10 +5,9 @@ import android.support.v7.widget.CardView
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
-import com.nollpointer.computationalapp.CardController
 import com.nollpointer.computationalapp.R
 
-class TriangleCard(context: Context): CardView(context), CardController {
+class TriangleCard(context: Context) : CardView(context) {
 
     private val resultTextView: TextView
     private val firstValueEditText: EditText
@@ -27,19 +26,39 @@ class TriangleCard(context: Context): CardView(context), CardController {
     }
 
 
-    fun calculate(){
+    fun calculate() {
         val a = firstValueEditText.text.toString().toDouble()
         val b = secondValueEditText.text.toString().toDouble()
         val c = thirdValueEditText.text.toString().toDouble()
 
-        if(c < a || c < b)
+        if (c < a || c < b)
             resultTextView.text = "Правильный треугольник в сечении невозможен"
-        else{
-            if(a == b) {
-                val result = Math.sqrt(c * c - a * a)
-                resultTextView.text = "AN = BM = $result"
-            }else
-                resultTextView.text = "Правильный треугольник в сечении невозможен"
+        else {
+            val AN = Math.sqrt(
+                (a * a + c * c - 2 * b * b + 2 * Math.sqrt(
+                    Math.pow(a, 4.0) + Math.pow(
+                        b,
+                        4.0
+                    ) + Math.pow(c, 4.0) + b * b * c * c - a * a * b * b - a * a * c * c
+                )) / 3
+            )
+
+            val BM = Math.sqrt(
+                (b * b + c * c - 2 * a * a + 2 * Math.sqrt(
+                    Math.pow(a, 4.0) + Math.pow(
+                        b,
+                        4.0
+                    ) + Math.pow(c, 4.0) + b * b * c * c - a * a * b * b - a * a * c * c
+                )) / 3
+            )
+
+            resultTextView.text = "AN = $AN\n" +
+                    "BN = $BM"
+//            if(a == b) {
+//                val result = Math.sqrt(c * c - a * a)
+//                resultTextView.text = "AN = BM = $result"
+//            }else
+//                resultTextView.text = "Правильный треугольник в сечении невозможен"
         }
     }
 

@@ -2,15 +2,13 @@ package com.nollpointer.computationalapp.view
 
 import android.content.Context
 import android.support.v7.widget.CardView
-import android.text.Editable
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import com.nollpointer.computationalapp.CardController
 import com.nollpointer.computationalapp.R
 
-class TriangleComputationCard(context: Context): CardView(context), CardController {
+class TriangleComputationCard(context: Context): CardView(context) {
 
     private val resultTextView: TextView
     private val xValueEditText: EditText

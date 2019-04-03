@@ -83,15 +83,13 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun getInfoCards(): List<CardController> {
+    private fun getInfoCards(): List<CardView> {
         computationCard = ComputationCard(this)
         triangleCard = TriangleCard(this)
         naturalNumbersComputationCard = NaturalNumbersComputationCard(this)
         triangleComputationCard = TriangleComputationCard(this)
 
-        val list = mutableListOf<CardController>(computationCard, triangleCard, naturalNumbersComputationCard, triangleComputationCard)
-
-        return list;
+        return mutableListOf(computationCard, triangleCard, naturalNumbersComputationCard, triangleComputationCard)
     }
 
     private fun showInfoDialog() {
@@ -108,11 +106,11 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    class InfoCardAdapter(val context: Context, val infoCardsList: List<CardController>) : PagerAdapter() {
+    class InfoCardAdapter(val context: Context, val infoCardsList: List<CardView>) : PagerAdapter() {
 
         override fun instantiateItem(container: ViewGroup, position: Int): Any {
 
-            container.addView(infoCardsList[position] as CardView)
+            container.addView(infoCardsList[position])
             return infoCardsList[position]
 
         }
